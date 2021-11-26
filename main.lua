@@ -11,18 +11,19 @@ function love.load()
     blueHue  = 0.2
     rocketL = {
         50,500,
-        50,150,
-        25,150,
+        50,250,
+        25,250,
         25,500
     }
 
     rocketR = {
         750,500,
-        750,150,
-        775,150,
+        750,250,
+        775,250,
         775,500
     }
 
+    rocketSpeed = 400
     -- dodaj cos w stylu rocketSpeed
 
     -- rocketR[1]  ==  750
@@ -64,6 +65,7 @@ function love.draw()
         "fill",
         rocketR
     )
+
     
 
 end

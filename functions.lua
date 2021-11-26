@@ -21,6 +21,36 @@ function functions.detectColision(ballCenter, ballVelocity, dt, world)
         ballCenter[2] = 0 + ballRadius
         ballVelocity[2] = -ballVelocity[2]
     end
+
+    if love.keyboard.isDown("w") then 
+        rocketL[2] = rocketL[2] - rocketSpeed * dt
+        rocketL[4] = rocketL[4] - rocketSpeed * dt
+        rocketL[6] = rocketL[6] - rocketSpeed * dt
+        rocketL[8] = rocketL[8] - rocketSpeed * dt
+    end
+
+    if love.keyboard.isDown("s") then 
+        rocketL[2] = rocketL[2] + rocketSpeed * dt
+        rocketL[4] = rocketL[4] + rocketSpeed * dt
+        rocketL[6] = rocketL[6] + rocketSpeed * dt
+        rocketL[8] = rocketL[8] + rocketSpeed * dt
+    end
+
+    if love.keyboard.isDown("o") then 
+        rocketR[2] = rocketR[2] - rocketSpeed * dt
+        rocketR[4] = rocketR[4] - rocketSpeed * dt
+        rocketR[6] = rocketR[6] - rocketSpeed * dt
+        rocketR[8] = rocketR[8] - rocketSpeed * dt
+    end
+    
+    if love.keyboard.isDown("l") then 
+        rocketR[2] = rocketR[2] + rocketSpeed * dt
+        rocketR[4] = rocketR[4] + rocketSpeed * dt
+        rocketR[6] = rocketR[6] + rocketSpeed * dt
+        rocketR[8] = rocketR[8] + rocketSpeed * dt
+    end
+    
+  
     
     return ballCenter, ballVelocity
 end
