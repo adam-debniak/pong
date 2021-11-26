@@ -1,7 +1,7 @@
 local functions = {}
 
-functions.ballMovement = function(ballCenter, ballVelocity, dt, world)
-    if 0 <= ballCenter[1] - ballRadius and ballCenter[1] + ballRadius <= 800 then 
+functions.ballMovement = function(ballCenter, ballRadius, ballVelocity, dt, world)
+    if 0 <= ballCenter[1] - ballRadius and ballCenter[1] + ballRadius <= 800 then
         ballCenter[1] = ballCenter[1] + ballVelocity[1]*dt
     elseif ballCenter[1] + ballRadius > 800 then
         ballCenter[1] = 800 - ballRadius
@@ -28,7 +28,7 @@ functions.ballMovement = function(ballCenter, ballVelocity, dt, world)
     return ballCenter, ballVelocity
 end
 
-function functions.paddleMovement(rocketL,rocketR,rocketSpeed,dt)
+function functions.paddleMovement(rocketL, rocketR, rocketSpeed, dt)
     if love.keyboard.isDown("w") then 
         rocketL[2] = rocketL[2] - rocketSpeed * dt
         rocketL[4] = rocketL[4] - rocketSpeed * dt
@@ -49,7 +49,7 @@ function functions.paddleMovement(rocketL,rocketR,rocketSpeed,dt)
         rocketR[6] = rocketR[6] - rocketSpeed * dt
         rocketR[8] = rocketR[8] - rocketSpeed * dt
     end
-    
+
     if love.keyboard.isDown("l") then 
         rocketR[2] = rocketR[2] + rocketSpeed * dt
         rocketR[4] = rocketR[4] + rocketSpeed * dt
