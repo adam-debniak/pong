@@ -42,7 +42,8 @@ end
 -- potem w petli wykonuja sie 2 nastepujace funkcje:
 ---- 1) update
 function love.update(dt)
-    ballCenter, ballVelocity = f.detectColision(ballCenter, ballVelocity, dt)
+    f.paddleMovement(rocketL, rocketR, rocketSpeed, dt)
+    f.ballMovement(ballCenter, ballVelocity, dt)
 end
 
 ---- 2) dRedaw

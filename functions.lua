@@ -1,7 +1,6 @@
 local functions = {}
 
-function functions.detectColision(ballCenter, ballVelocity, dt, world)
-    
+functions.ballMovement = function(ballCenter, ballVelocity, dt, world)
     if 0 <= ballCenter[1] - ballRadius and ballCenter[1] + ballRadius <= 800 then 
         ballCenter[1] = ballCenter[1] + ballVelocity[1]*dt
     elseif ballCenter[1] + ballRadius > 800 then
