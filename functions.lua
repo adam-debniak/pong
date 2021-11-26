@@ -22,6 +22,14 @@ function functions.detectColision(ballCenter, ballVelocity, dt, world)
         ballVelocity[2] = -ballVelocity[2]
     end
 
+    
+    
+  
+    
+    return ballCenter, ballVelocity
+end
+
+function functions.paddleMovement(rocketL,rocketR,rocketSpeed,dt)
     if love.keyboard.isDown("w") then 
         rocketL[2] = rocketL[2] - rocketSpeed * dt
         rocketL[4] = rocketL[4] - rocketSpeed * dt
@@ -49,10 +57,6 @@ function functions.detectColision(ballCenter, ballVelocity, dt, world)
         rocketR[6] = rocketR[6] + rocketSpeed * dt
         rocketR[8] = rocketR[8] + rocketSpeed * dt
     end
-    
-  
-    
-    return ballCenter, ballVelocity
 end
 
 return functions
