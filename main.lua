@@ -1,9 +1,12 @@
 local f = require("functions")
 
-local ballCenter = {400,300}
-local ballRadius = 50
-local ballColor = {0.5,0.5,0.5}
-local ballVelocity = {100,110}
+local ball = {}
+ball.radius = 50
+ball.color = {0.5, 0.5, 0.5}
+ball.velocity = {100, 110}
+
+local world = {}
+
 local rocketL = {
     50,500,
     50,250,
@@ -19,20 +22,25 @@ local rocketR = {
 local rocketSpeed = 400
 
 function love.load()
+    world.width, world.height = love.graphics.getDimensions()
+    ball.center = {world.width/2, world.height/2}
 end
 
 function love.update(dt)
-    f.paddleMovement(rocketL, rocketR, rocketSpeed, dt)
-    f.ballMovement(ballCenter, ballRadius, ballVelocity, dt)
+    f.paddleMovement(rocketL, rocketR, rocketSpeed, dt, world)
+    f.ballMovement(ball, dt, world)
 end
 
 function love.draw()
-    love.graphics.setColor(ballColor[1],ballColor[2],ballColor[3])
+    love.graphics.setColor(
+        ball.color[1],
+        ball.color[2],
+        ball.color[3])
     love.graphics.circle(
         "fill",
-        ballCenter[1],
-        ballCenter[2],
-        ballRadius
+        ball.center[1],
+        ball.center[2],
+        ball.radius
     )
     love.graphics.setColor(1,1,1)
     love.graphics.polygon(

@@ -1,34 +1,30 @@
 local functions = {}
 
-functions.ballMovement = function(ballCenter, ballRadius, ballVelocity, dt, world)
-    if 0 <= ballCenter[1] - ballRadius and ballCenter[1] + ballRadius <= 800 then
-        ballCenter[1] = ballCenter[1] + ballVelocity[1]*dt
-    elseif ballCenter[1] + ballRadius > 800 then
-        ballCenter[1] = 800 - ballRadius
-        ballVelocity[1] = -ballVelocity[1]
+functions.ballMovement = function(ball, dt, world)    
+    if 0 <= ball.center[1] - ball.radius and ball.center[1] + ball.radius <= world.width then
+        ball.center[1] = ball.center[1] + ball.velocity[1]*dt
+    elseif ball.center[1] + ball.radius > world.width then
+        ball.center[1] = world.width - ball.radius
+        ball.velocity[1] = -ball.velocity[1]
     else
-        ballCenter[1] = 0 + ballRadius
-        ballVelocity[1] = -ballVelocity[1]
+        ball.center[1] = 0 + ball.radius
+        ball.velocity[1] = -ball.velocity[1]
     end
 
-    if 0 <= ballCenter[2] - ballRadius and ballCenter[2] + ballRadius <= 600 then
-        ballCenter[2] = ballCenter[2] + ballVelocity[2]*dt
-    elseif ballCenter[2] + ballRadius > 600 then
-        ballCenter[2] = 600 - ballRadius
-        ballVelocity[2] = -ballVelocity[2]
+    if 0 <= ball.center[2] - ball.radius and ball.center[2] + ball.radius <= world.height then
+        ball.center[2] = ball.center[2] + ball.velocity[2]*dt
+    elseif ball.center[2] + ball.radius > world.height then
+        ball.center[2] = world.height - ball.radius
+        ball.velocity[2] = -ball.velocity[2]
     else
-        ballCenter[2] = 0 + ballRadius
-        ballVelocity[2] = -ballVelocity[2]
+        ball.center[2] = 0 + ball.radius
+        ball.velocity[2] = -ball.velocity[2]
     end
 
-    
-    
-  
-    
-    return ballCenter, ballVelocity
+    return ball.center, ball.velocity
 end
 
-function functions.paddleMovement(rocketL, rocketR, rocketSpeed, dt)
+function functions.paddleMovement(rocketL, rocketR, rocketSpeed, dt, world)
     if love.keyboard.isDown("w") then 
         rocketL[2] = rocketL[2] - rocketSpeed * dt
         rocketL[4] = rocketL[4] - rocketSpeed * dt
