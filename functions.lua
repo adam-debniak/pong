@@ -53,10 +53,43 @@ function functions.paddleMovement(rocketL, rocketR, rocketSpeed, dt, world)
         rocketR[6] = rocketR[6] + rocketSpeed * dt
         rocketR[8] = rocketR[8] + rocketSpeed * dt
     end
+    return rocketR[2], rocketR[4], rocketR[6], rocketR[8], rocketL[2], rocketL[4], rocketL[6], rocketL[8]
+end
+
+
+function functions.ballBounce(ball, rocketL, rocketR, world, dt)
+
+    if rocketL[4] < ball.center[2] and ball.center[2] < rocketL[2]  then
+
+        if rocketL[1] < ball.center[1] - ball.radius then
+            ball.center[1] = ball.center[1] + ball.velocity[1]*dt
+        elseif rocketL[1] > ball.center[1] - ball.radius then
+            ball.center[1] = rocketL[1] 
+            ball.velocity[1] = -ball.velocity[1]
+
+        end
+
+        
+
+    end
+
+    if rocketR[4] < ball.center[2] and ball.center[2] < rocketR[2] then
+        if rocketR[1] > ball.center[1] + ball.radius then
+            ball.center[1] = ball.center[1] + ball.velocity[1]*dt
+        elseif rocketR[1] < ball.center[1] + ball.radius then
+            ball.center[1] = rocketR[1] 
+            ball.velocity[1] = -ball.velocity[1]
+        
+        end
+        
+
+
+    end
+end
 
     -- zrobić żeby piłka odbijała się od paletek, sprawdzać czy jest szansa na zderzenie przez sprawdzenie koordynatów.
 
     
-end
+
 
 return functions

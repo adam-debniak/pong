@@ -29,6 +29,7 @@ end
 function love.update(dt)
     f.paddleMovement(rocketL, rocketR, rocketSpeed, dt, world)
     f.ballMovement(ball, dt, world)
+    f.ballBounce(ball, rocketL, rocketR, world, dt)
 end
 
 function love.draw()
