@@ -59,25 +59,31 @@ end
 
 function functions.ballBounce(ball, rocketL, rocketR, world, dt)
 
-    if rocketL[4] < ball.center[2] and ball.center[2] < rocketL[2]  then
+    if rocketL[4] <= ball.center[2] and ball.center[2] <= rocketL[2]  then
 
-        if rocketL[1] < ball.center[1] - ball.radius then
-            ball.center[1] = ball.center[1] + ball.velocity[1]*dt
-        elseif rocketL[1] > ball.center[1] - ball.radius then
-            ball.center[1] = rocketL[1] 
-            ball.velocity[1] = -ball.velocity[1]
 
-        end
+        -- if rocketL[1] < ball.center[1] - ball.radius then
+        -- if ball.center[1] - ball.radius < 
+
+        --     ball.center[1] = ball.center[1] + ball.velocity[1]*dt
+        -- elseif rocketL[1] > ball.center[1] - ball.radius then
+        --     ball.center[1] = rocketL[1] 
+        --     ball.velocity[1] = -ball.velocity[1]
+
+        -- end
 
         
 
     end
 
-    if rocketR[4] < ball.center[2] and ball.center[2] < rocketR[2] then
+    if rocketR[4] <= ball.center[2] and ball.center[2] <=
+     rocketR[2] then
+
+
         if rocketR[1] > ball.center[1] + ball.radius then
             ball.center[1] = ball.center[1] + ball.velocity[1]*dt
         elseif rocketR[1] < ball.center[1] + ball.radius then
-            ball.center[1] = rocketR[1] 
+            --ball.center[1] = rocketR[1] 
             ball.velocity[1] = -ball.velocity[1]
         
         end

@@ -19,6 +19,15 @@ local rocketR = {
     775,250,
     775,500
 }
+
+local rockets = {}
+rockets.left = {}
+rocket.edges = {}
+
+
+rockets.right = {}
+
+
 local rocketSpeed = 400
 
 function love.load()
@@ -28,6 +37,7 @@ end
 
 function love.update(dt)
     f.paddleMovement(rocketL, rocketR, rocketSpeed, dt, world)
+    -- rockets.dealWithMovementDERP(dt, world)
     f.ballMovement(ball, dt, world)
     f.ballBounce(ball, rocketL, rocketR, world, dt)
 end
