@@ -34,7 +34,7 @@ end
 
 function love.draw()
     love.graphics.setColor(
-        ball.color[1],
+        ball.color[1],     
         ball.color[2],
         ball.color[3])
     love.graphics.circle(
