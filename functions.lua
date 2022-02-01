@@ -1,6 +1,6 @@
 local functions = {}
 
-functions.ballMovement = function(ball, dt, world)    
+functions.ballMovement = function(ball, dt, world)
     if 0 <= ball.center[1] - ball.radius and ball.center[1] + ball.radius <= world.width then
         ball.center[1] = ball.center[1] + ball.velocity[1]*dt
     elseif ball.center[1] + ball.radius > world.width then

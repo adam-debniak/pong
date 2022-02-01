@@ -1,4 +1,5 @@
 local f = require("functions")
+-- local newBall = require("ball")
 
 local ball = {}
 ball.radius = 50
@@ -22,6 +23,8 @@ local rocketR = {
 local rocketSpeed = 400
 
 function love.load()
+    -- newBall.create(world.width/2, world.height/2)
+
     world.width, world.height = love.graphics.getDimensions()
     ball.center = {world.width/2, world.height/2}
 end
