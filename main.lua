@@ -6,6 +6,9 @@ ball.radius = 50
 ball.color = {0.5, 0.5, 0.5}
 ball.velocity = {100, 110}
 
+local score1 = 0
+local score2 = 2
+
 local world = {}
 
 local rocketL = {
@@ -55,5 +58,8 @@ function love.draw()
         "fill",
         rocketR
     )
+    love.graphics.print("use w,s", 50, 550 )
+    love.graphics.print("use o,l", 715, 550 )
+    love.graphics.print("0 : 0" , 380, 50 ) --tu powinny być zmienne zamiast 0
 
 end

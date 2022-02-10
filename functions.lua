@@ -59,27 +59,20 @@ end
 
 function functions.ballBounce(ball, rocketL, rocketR, world, dt)
 
-    if  ball.center[2] < rocketL[2] and ball.center[2] > rocketL[4] then
-
-        if ball.center[1] - ball.radius < rocketL[1] then
-            ball.center[1] = ball.center[1] + ball.velocity[1]*dt
+    if ball.center[2] >= rocketL[4] and ball.center[2] <= rocketL[2] then
+        if ball.center[1]  - ball.radius <= rocketL[1] then
             ball.velocity[1] = -ball.velocity[1]
-        elseif ball.center[1] - ball.radius > rocketL[1] then
-            ball.center[1] = ball.center[1] + ball.velocity[1]*dt
         end
-        
+
     end
 
-    if  ball.center[2] < rocketR[2] and ball.center[2] > rocketR[4] then
-        
-        if ball.center[1] + ball.radius < rocketR[1] then
-            ball.center[1] = ball.center[1] + ball.velocity[1]*dt
-            ball.velocity[1] = -ball.velocity[1]
-        elseif ball.center[1] - ball.radius > rocketR[1] then
-            ball.center[1] = ball.center[1] + ball.velocity[1]*dt
-        end
-        
-    end
+    --if ball.center[2] >= rocketL[4] and ball.center[2] <= rocketL[2] then
+        --if ball.center[1]  - ball.radius <= rocketL[1] then
+          --  ball.velocity[1] = -ball.velocity[1]
+        --end
+
+    --end
+
 
     
 
@@ -87,8 +80,11 @@ function functions.ballBounce(ball, rocketL, rocketR, world, dt)
     
 end
 
-    -- zrobić żeby piłka odbijała się od paletek, sprawdzać czy jest szansa na zderzenie przez sprawdzenie koordynatów.
+function functions.pointsCounter(world)
 
+
+    -- zrobić żeby piłka odbijała się od paletek, sprawdzać czy jest szansa na zderzenie przez sprawdzenie koordynatów.
+end
     
 
 
