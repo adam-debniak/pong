@@ -57,21 +57,37 @@ function functions.paddleMovement(rocketL, rocketR, rocketSpeed, dt, world)
 end
 
 
-function functions.ballBounce(ball, rocketL, rocketR, world, dt)
+function functions.ballBounce(ball, rocketL, rocketR)
+    local ballY = ball.center[2]
+    local ballX = ball.center[1]
+    local LrL = rocketL[5]
+    local LrR = rocketL[1]
+    local LrT = rocketL[2]
+    local LrB = rocketL[4]
 
     if ball.center[2] >= rocketL[4] and ball.center[2] <= rocketL[2] then
         if ball.center[1]  - ball.radius <= rocketL[1] then
+            ball.center[1] = LrR + ball.radius
+            ball.velocity[1] = -ball.velocity[1]
+        end
+
+    end 
+
+    if ball.center[2] >= rocketR[4] and ball.center[2] <= rocketR[2] then
+        if ball.center[1]  + ball.radius >= rocketR[1] then
             ball.velocity[1] = -ball.velocity[1]
         end
 
     end
 
-    --if ball.center[2] >= rocketL[4] and ball.center[2] <= rocketL[2] then
-        --if ball.center[1]  - ball.radius <= rocketL[1] then
-          --  ball.velocity[1] = -ball.velocity[1]
-        --end
+    -- if
+    --     LrL <= ballX - ball.radius and ballX - ball.radius <= LrR
+    --         and
+    --     LrT <= ballY and ballY <= LrB
+    --         then
 
-    --end
+    --     ball.velocity[2] = -ball.velocity[2]
+    -- end
 
 
     
@@ -80,7 +96,13 @@ function functions.ballBounce(ball, rocketL, rocketR, world, dt)
     
 end
 
-function functions.pointsCounter(world)
+function functions.countPoints(ball, world, score)
+    if ball.center[1] - ball.radius == 0 then 
+        score[2] = score[2] + 1
+    elseif ball.center[1] + ball.radius == world.width then
+        score[1] = score[1] + 1
+    end
+
 
 
     -- zrobić żeby piłka odbijała się od paletek, sprawdzać czy jest szansa na zderzenie przez sprawdzenie koordynatów.

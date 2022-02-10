@@ -2,28 +2,30 @@ local f = require("functions")
 -- local newBall = require("ball")
 
 local ball = {}
-ball.radius = 50
+ball.radius = 25
 ball.color = {0.5, 0.5, 0.5}
-ball.velocity = {100, 110}
+ball.velocity = {250, 250}
 
-local score1 = 0
-local score2 = 2
+local score = {
+    [1] = 0,
+    [2] = 0
+}
 
 local world = {}
 
 local rocketL = {
-    50,500,
+    50,400,
     50,250,
     25,250,
-    25,500
+    25,400
 }
 local rocketR = {
-    750,500,
+    750,400,
     750,250,
     775,250,
-    775,500
+    775,400
 }
-local rocketSpeed = 400
+local rocketSpeed = 250
 
 function love.load()
     -- newBall.create(world.width/2, world.height/2)
@@ -35,7 +37,8 @@ end
 function love.update(dt)
     f.paddleMovement(rocketL, rocketR, rocketSpeed, dt, world)
     f.ballMovement(ball, dt, world)
-    f.ballBounce(ball, rocketL, rocketR, world, dt)
+    f.ballBounce(ball, rocketL, rocketR)
+    f.countPoints(ball, world, score)
 end
 
 function love.draw()
@@ -60,6 +63,6 @@ function love.draw()
     )
     love.graphics.print("use w,s", 50, 550 )
     love.graphics.print("use o,l", 715, 550 )
-    love.graphics.print("0 : 0" , 380, 50 ) --tu powinny być zmienne zamiast 0
+    love.graphics.print(score[1] .. " : " .. score[2] , 380, 50 ) --tu powinny być zmienne zamiast 0
 
 end
