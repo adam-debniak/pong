@@ -67,7 +67,7 @@ function functions.ballBounce(ball, rocketL, rocketR)
 
     if ball.center[2] >= rocketL[4] and ball.center[2] <= rocketL[2] then
         if ball.center[1]  - ball.radius <= rocketL[1] then
-            ball.center[1] = LrR + ball.radius
+            --ball.center[1] = LrR + ball.radius
             ball.velocity[1] = -ball.velocity[1]
         end
 
@@ -99,9 +99,15 @@ end
 function functions.countPoints(ball, world, score)
     if ball.center[1] - ball.radius == 0 then 
         score[2] = score[2] + 1
+        ball.center[1] = 400
+        ball.center[2] = 300
     elseif ball.center[1] + ball.radius == world.width then
         score[1] = score[1] + 1
+        ball.center[1] = 400
+        ball.center[2] = 300
     end
+
+
 
 
 
