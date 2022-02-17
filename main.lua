@@ -35,11 +35,11 @@ local rocketR = {
 }
 local rocketSpeed = 250
 
-local winningScore = 1;
-local gameEnded = false
+local winningScore = 1; -- ile potrzeba punktów aby wygrać czyli kiedy gra się wyłączy
+local gameEnded = false -- utworzenie zmiennej której wartość logiczna będzie zmieniana przez if-y aby przekazać programowi informacje kiedy gra się zakończy lub kiedy trwa
 
-local amountOfTimeToShowEndingScreen = 5;
-local timeSinceGameEnded = 0;
+local amountOfTimeToShowEndingScreen = 5; -- ile sekund będzie się pokazywał ekran końcowy
+local timeSinceGameEnded = 0; -- czas w sekundach który zaczyna się naliczać po zakończeniu gry
 
 function love.load()
 	-- newBall.create(world.width/2, world.height/2)
@@ -49,27 +49,27 @@ function love.load()
 end
 
 function love.update(dt)
-	if not gameEnded then
-		if score[1] == winningScore or score[2] == winningScore then
+	if not gameEnded then --jeśli gra się nie zakpńczyła to ... 
+		if score[1] == winningScore or score[2] == winningScore then -- jeśli wynik jedngo z graczy osiągnie wartość uznawaną za zwycięstwo to gra się kończy
 			-- love.event.quit()
-			gameEnded = true
-		else
+			gameEnded = true -- zmiana wartości zmiennej game ended na true ponieważ gra się zakończyła po zdobyciu wymaganej liczby punktów
+		else -- else czyli jeśli gra DALEJ działa to wtedy wszystkie funkcje dalej się wykonują dopóki gameEnded nie zmieni wartości na true
 			f.paddleMovement(rocketL, rocketR, rocketSpeed, dt, world)
 			f.ballMovement(ball, dt, world)
 			f.ballBounce(ball, rocketL, rocketR)
 			f.countPoints(ball, world, score)
 		end
 
-		if love.keyboard.isDown("q") then
+		if love.keyboard.isDown("q") then -- sprawdza czy naciśnięto przycisk q jeśli tak to gra się wyłącza i nie pkazuje ekranu końcowego po prostu alt + f4
 			love.event.quit()
 		end
     else
-        timeSinceGameEnded = timeSinceGameEnded + dt
+        timeSinceGameEnded = timeSinceGameEnded + dt -- naliczanie sekund po zaończeniu gry 
 	end
 end
 
 function love.draw()
-	if not gameEnded then
+	if not gameEnded then -- jeśli gra się jeszcze nie skończył to program dalej rysuje obiekty takie jak paletki i piłka
 		love.graphics.setColor(ball.color[1], ball.color[2], ball.color[3])
 		love.graphics.circle("fill", ball.center[1], ball.center[2], ball.radius)
 		love.graphics.setColor(1, 1, 1)
@@ -80,7 +80,7 @@ function love.draw()
 		love.graphics.print("use o,l", 715, 550)
 		love.graphics.print(score[1] .. " : " .. score[2], 380, 50) --tu powinny być zmienne zamiast 0
     else
-        local message = "Time since game ended: " .. timeSinceGameEnded
+        local message = "Time since game ended: " .. timeSinceGameEnded -- wyświetla komunikat który pokazuje w sekundach ile czasu minęło od zakończenia gry i rozpoczęcia ekranu końcowego
         love.graphics.print(message, world.width/2, world.height/2)
         -- Some functions in the string library are quite simple: string.len(s) returns the length of a string s.
 	end
