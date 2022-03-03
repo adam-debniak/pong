@@ -81,7 +81,15 @@ function love.draw()
 		love.graphics.print(score[1] .. " : " .. score[2], 380, 50) --tu powinny być zmienne zamiast 0
     else
         local message = "Time since game ended: " .. timeSinceGameEnded -- wyświetla komunikat który pokazuje w sekundach ile czasu minęło od zakończenia gry i rozpoczęcia ekranu końcowego
-        love.graphics.print(message, world.width/2, world.height/2)
+		if score[1] == winningScore then
+			love.graphics.print("P1 WINS!", 350, 300)
+		end
+		if score[2] == winningScore then
+			love.graphics.print("P2 WINS!", 350, 300)
+			
+		end
+
+        love.graphics.print(message, 350, 100)
         -- Some functions in the string library are quite simple: string.len(s) returns the length of a string s.
 	end
 end
